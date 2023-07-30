@@ -1,0 +1,295 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.21123352105725693 0.7599760224687835 0.6146680769767373 1.1034644763398198
+  position -0.7864491254202757 -0.9444684915560005 1.3592396917916378
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 0 -0.11
+  floorSize 5 5
+}
+DEF BF Robot {
+  translation 0 0 0.3
+  children [
+    DEF Body Shape {
+      appearance PBRAppearance {
+        baseColor 0.792157 0.819608 0.933333
+        roughness 1
+      }
+      geometry Mesh {
+        url [
+          "../BFG3_model_3/meshes/base_link.STL"
+        ]
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor 0.055 0.1625 0
+      }
+      endPoint DEF LF_upper_soild Solid {
+        translation 0.055 0.1625 0
+        rotation -1 -2.747656756347831e-16 -3.925223937639759e-17 1.5707999999999998
+        children [
+          DEF LF_upper Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Mesh {
+              url [
+                "../BFG3_model_3/meshes/LF_upper.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 -1
+              anchor 0.13841 -0.057823 0.005
+            }
+            endPoint DEF LF_lower_soild Solid {
+              translation 0.13841 -0.057823 0.005
+              rotation 0 0 -1 0
+              children [
+                DEF LF_lower Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                  }
+                  geometry Mesh {
+                    url [
+                      "../BFG3_model_3/meshes/LF_below.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 -1
+                    anchor -0.19341 0.15841 -0.0005
+                  }
+                  endPoint DEF L_wheel_solid Solid {
+                    translation -0.19341 0.15841 -0.0005
+                    rotation 0 0 -1 0
+                    children [
+                      DEF L_wheel Shape {
+                        appearance PBRAppearance {
+                        }
+                        geometry Mesh {
+                          url [
+                            "../BFG3_model_3/meshes/L_wheel.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          axis 0 0 -1
+                        }
+                        endPoint DEF LB_below_solid Solid {
+                          rotation 0 0 -1 0
+                          children [
+                            DEF LB_below Shape {
+                              appearance PBRAppearance {
+                                roughness 1
+                              }
+                              geometry Mesh {
+                                url [
+                                  "../BFG3_model_3/meshes/LB_below.STL"
+                                ]
+                              }
+                            }
+                            HingeJoint {
+                              jointParameters HingeJointParameters {
+                                axis 0 0 -1
+                                anchor -0.19341 -0.15841 0.0335
+                              }
+                              endPoint DEF LB_upper_solid Solid {
+                                translation -0.19341 -0.15841 0.0335
+                                rotation 0 0 -1 0
+                                children [
+                                  DEF LB_upper Shape {
+                                    appearance PBRAppearance {
+                                      roughness 1
+                                    }
+                                    geometry Mesh {
+                                      url [
+                                        "../BFG3_model_3/meshes/LB_upper.STL"
+                                      ]
+                                    }
+                                  }
+                                  HingeJoint {
+                                    jointParameters HingeJointParameters {
+                                      axis 0 0 -1
+                                      anchor 0.13841 0.057823 0
+                                    }
+                                    endPoint SolidReference {
+                                      solidName "robot"
+                                    }
+                                  }
+                                ]
+                                boundingObject USE LB_upper
+                                physics Physics {
+                                }
+                              }
+                            }
+                          ]
+                          boundingObject USE LB_below
+                          physics Physics {
+                          }
+                        }
+                      }
+                    ]
+                    boundingObject USE L_wheel
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              boundingObject USE LF_lower
+              physics Physics {
+              }
+            }
+          }
+        ]
+        boundingObject USE LF_upper
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.055 -0.2005 0
+      }
+      endPoint DEF RF_upper_solid Solid {
+        translation 0.055 -0.2005 0
+        rotation 1 0 0 1.5708
+        children [
+          DEF RF_upper Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Mesh {
+              url [
+                "../BFG3_model_3/meshes/RF_upper.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0.13841 0.057823 -0.015
+            }
+            endPoint DEF RF_below_solid Solid {
+              translation 0.13841 0.057823 -0.015
+              children [
+                DEF RF_below Shape {
+                  appearance PBRAppearance {
+                  }
+                  geometry Mesh {
+                    url [
+                      "../BFG3_model_3/meshes/RF_below.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 -1
+                    anchor -0.193407 -0.15841 0
+                  }
+                  endPoint DEF R_wheel Solid {
+                    translation -0.193407 -0.15841 0
+                    children [
+                      DEF R_wheel Shape {
+                        appearance PBRAppearance {
+                        }
+                        geometry Mesh {
+                          url [
+                            "../BFG3_model_3/meshes/R_wheel.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          axis 0 0 -1
+                        }
+                        endPoint DEF RB_below Solid {
+                          children [
+                            DEF RB_below Shape {
+                              appearance PBRAppearance {
+                              }
+                              geometry Mesh {
+                                url [
+                                  "../BFG3_model_3/meshes/RB_below.STL"
+                                ]
+                              }
+                            }
+                            HingeJoint {
+                              jointParameters HingeJointParameters {
+                                axis 0 0 -1
+                                anchor -0.193407 0.15841 0
+                              }
+                              endPoint DEF RB_upper_solid Solid {
+                                translation -0.193407 0.15841 0
+                                children [
+                                  DEF RB_upper Shape {
+                                    appearance PBRAppearance {
+                                    }
+                                    geometry Mesh {
+                                      url [
+                                        "../BFG3_model_3/meshes/RB_upper.STL"
+                                      ]
+                                    }
+                                  }
+                                  HingeJoint {
+                                    jointParameters HingeJointParameters {
+                                      axis 0 0 -1
+                                      anchor 0.138407 -0.057823 0
+                                    }
+                                    endPoint SolidReference {
+                                      solidName "robot"
+                                    }
+                                  }
+                                ]
+                                boundingObject USE RB_upper
+                                physics Physics {
+                                }
+                              }
+                            }
+                          ]
+                          boundingObject USE RB_below
+                          physics Physics {
+                          }
+                        }
+                      }
+                    ]
+                    boundingObject USE R_wheel
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              boundingObject USE RF_below
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE RF_upper
+        physics Physics {
+        }
+      }
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+}

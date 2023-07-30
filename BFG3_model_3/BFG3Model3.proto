@@ -1,0 +1,542 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the BFG3Model3
+# Extracted from: C:\Users\kaming\Desktop\FYP\webots\webots_testing\BFG3_model_3\urdf\BFG3_model_3.urdf
+
+PROTO BFG3Model3 [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "BFG3Model3"  # Is `Robot.name`.
+  field  SFString    controller      "void"        # Is `Robot.controller`.
+  field  MFString    controllerArgs  []            # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""            # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE         # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE          # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE         # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance DEF base_link_material PBRAppearance {
+          baseColor 0.792157 0.819608 0.933333
+          roughness 1.000000
+          metalness 0
+        }
+        geometry DEF base_link Mesh {
+          url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/base_link.STL"
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 -1.000000 0.000000
+          anchor 0.055000 0.162500 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "LF_motor"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "LF_motor_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.055000 0.162500 0.000000
+          rotation -1.000000 0.000000 0.000000 1.570796
+          children [
+            Shape {
+              appearance DEF LF_upper_material PBRAppearance {
+                baseColor 0.792157 0.819608 0.933333
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF LF_upper Mesh {
+                url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/LF_upper.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000000 0.000000 -1.000000
+                anchor 0.138407 -0.057823 0.005000
+              }
+              device [
+                RotationalMotor {
+                  name "LF_leg_joint"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "LF_leg_joint_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.138407 -0.057823 0.005000
+                children [
+                  Shape {
+                    appearance DEF LF_below_material PBRAppearance {
+                      baseColor 0.792157 0.819608 0.933333
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF LF_below Mesh {
+                      url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/LF_below.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000000 0.000000 -1.000000
+                      anchor -0.193407 0.158410 -0.000500
+                    }
+                    device [
+                      RotationalMotor {
+                        name "LF_wheel_joint"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "LF_wheel_joint_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation -0.193407 0.158410 -0.000500
+                      children [
+                        Shape {
+                          appearance DEF L_wheel_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF L_wheel Mesh {
+                            url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/L_wheel.STL"
+                          }
+                        }
+                        HingeJoint {
+                          jointParameters HingeJointParameters {
+                            axis 0.000000 0.000000 -1.000000
+                          }
+                          device [
+                            RotationalMotor {
+                              name "LB_wheel_joint"
+                              maxTorque 10000
+                            }
+                            PositionSensor {
+                              name "LB_wheel_joint_sensor"
+                            }
+                          ]
+                          endPoint Solid {
+                            children [
+                              Shape {
+                                appearance DEF LB_below_material PBRAppearance {
+                                  baseColor 0.792157 0.819608 0.933333
+                                  roughness 1.000000
+                                  metalness 0
+                                }
+                                geometry DEF LB_below Mesh {
+                                  url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/LB_below.STL"
+                                }
+                              }
+                              HingeJoint {
+                                jointParameters HingeJointParameters {
+                                  axis 0.000000 0.000000 -1.000000
+                                  anchor -0.193407 -0.158410 0.033500
+                                }
+                                device [
+                                  RotationalMotor {
+                                    name "LB_leg_joint"
+                                    maxTorque 10000
+                                  }
+                                  PositionSensor {
+                                    name "LB_leg_joint_sensor"
+                                  }
+                                ]
+                                endPoint Solid {
+                                  translation -0.193407 -0.158410 0.033500
+                                  children [
+                                    Shape {
+                                      appearance DEF LB_upper_material PBRAppearance {
+                                        baseColor 0.792157 0.819608 0.933333
+                                        roughness 1.000000
+                                        metalness 0
+                                      }
+                                      geometry DEF LB_upper Mesh {
+                                        url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/LB_upper.STL"
+                                      }
+                                    }
+                                    HingeJoint {
+                                      jointParameters HingeJointParameters {
+                                        axis 0.000000 0.000000 1.000000
+                                        anchor 0.138407 0.057823 0.000000
+                                      }
+                                      device [
+                                        RotationalMotor {
+                                          name "LB_motor"
+                                          maxTorque 10000
+                                        }
+                                        PositionSensor {
+                                          name "LB_motor_sensor"
+                                        }
+                                      ]
+                                      endPoint Solid {
+                                        translation 0.138407 0.057823 0.000000
+                                        children [
+                                          Shape {
+                                            appearance DEF L_body_material PBRAppearance {
+                                              baseColor 0.792157 0.819608 0.933333
+                                              roughness 1.000000
+                                              metalness 0
+                                            }
+                                            geometry DEF L_body Mesh {
+                                              url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/L_body.STL"
+                                            }
+                                          }
+                                        ]
+                                        name "L_body"
+                                        boundingObject USE L_body
+                                        physics Physics {
+                                          density -1
+                                          mass 0.039270
+                                          centerOfMass [ -0.000000 0.000000 -0.010000 ]
+                                          inertiaMatrix [
+                                            7.444920e-06 7.444920e-06 1.227185e-05
+                                            6.242456e-22 -1.305518e-21 -1.148430e-20
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                  name "LB_upper"
+                                  boundingObject USE LB_upper
+                                  physics Physics {
+                                    density -1
+                                    mass 0.073113
+                                    centerOfMass [ 0.078244 0.032654 -0.009662 ]
+                                    inertiaMatrix [
+                                      3.994873e-05 1.809124e-04 2.176978e-04
+                                      -6.794783e-05 1.497130e-21 1.189364e-21
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                            name "LB_below"
+                            boundingObject USE LB_below
+                            physics Physics {
+                              density -1
+                              mass 0.132217
+                              centerOfMass [ -0.102054 -0.084182 0.007536 ]
+                              inertiaMatrix [
+                                4.174902e-04 5.950857e-04 1.007834e-03
+                                -4.685137e-04 -3.290182e-20 -2.728625e-20
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                      name "L_wheel"
+                      boundingObject USE L_wheel
+                      physics Physics {
+                        density -1
+                        mass 1.027189
+                        centerOfMass [ -0.000000 -0.000000 0.080020 ]
+                        inertiaMatrix [
+                          1.648759e-03 1.648759e-03 2.659457e-03
+                          4.733997e-20 -1.384982e-19 -3.293236e-18
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "LF_below"
+                boundingObject USE LF_below
+                physics Physics {
+                  density -1
+                  mass 0.142829
+                  centerOfMass [ -0.099130 0.080642 0.028242 ]
+                  inertiaMatrix [
+                    4.318320e-04 6.146116e-04 1.041342e-03
+                    4.818807e-04 1.556603e-18 -1.365276e-18
+                  ]
+                }
+              }
+            }
+          ]
+          name "LF_upper"
+          boundingObject USE LF_upper
+          physics Physics {
+            density -1
+            mass 0.067686
+            centerOfMass [ 0.065013 -0.027124 0.015008 ]
+            inertiaMatrix [
+              4.236092e-05 1.765346e-04 2.164349e-04
+              7.130186e-05 1.413002e-19 -9.584383e-20
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 1.000000 -0.000000
+          anchor 0.055000 -0.200500 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "RF_motor"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "RF_motor_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.055000 -0.200500 0.000000
+          rotation 1.000000 0.000000 0.000000 1.570796
+          children [
+            Shape {
+              appearance DEF RF_upper_material PBRAppearance {
+                baseColor 0.792157 0.819608 0.933333
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF RF_upper Mesh {
+                url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/RF_upper.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000000 0.000000 1.000000
+                anchor 0.138407 0.057823 -0.015000
+              }
+              device [
+                RotationalMotor {
+                  name "RF_leg_joint"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "RF_leg_joint_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.138407 0.057823 -0.015000
+                children [
+                  Shape {
+                    appearance DEF RF_below_material PBRAppearance {
+                      baseColor 0.792157 0.819608 0.933333
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF RF_below Mesh {
+                      url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/RF_below.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000000 0.000000 -1.000000
+                      anchor -0.193407 -0.158410 0.000000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "RF_wheel_joint"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "RF_wheel_joint_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation -0.193407 -0.158410 0.000000
+                      children [
+                        Shape {
+                          appearance DEF R_wheel_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF R_wheel Mesh {
+                            url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/R_wheel.STL"
+                          }
+                        }
+                        HingeJoint {
+                          jointParameters HingeJointParameters {
+                            axis 0.000000 0.000000 -1.000000
+                          }
+                          device [
+                            RotationalMotor {
+                              name "RB_wheel_joint"
+                              maxTorque 10000
+                            }
+                            PositionSensor {
+                              name "RB_wheel_joint_sensor"
+                            }
+                          ]
+                          endPoint Solid {
+                            children [
+                              Shape {
+                                appearance DEF RB_below_material PBRAppearance {
+                                  baseColor 0.792157 0.819608 0.933333
+                                  roughness 1.000000
+                                  metalness 0
+                                }
+                                geometry DEF RB_below Mesh {
+                                  url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/RB_below.STL"
+                                }
+                              }
+                              HingeJoint {
+                                jointParameters HingeJointParameters {
+                                  axis 0.000000 0.000000 -1.000000
+                                  anchor -0.193407 0.158410 0.000000
+                                }
+                                device [
+                                  RotationalMotor {
+                                    name "RB_leg_joint"
+                                    maxTorque 10000
+                                  }
+                                  PositionSensor {
+                                    name "RB_leg_joint_sensor"
+                                  }
+                                ]
+                                endPoint Solid {
+                                  translation -0.193407 0.158410 0.000000
+                                  children [
+                                    Shape {
+                                      appearance DEF RB_upper_material PBRAppearance {
+                                        baseColor 0.792157 0.819608 0.933333
+                                        roughness 1.000000
+                                        metalness 0
+                                      }
+                                      geometry DEF RB_upper Mesh {
+                                        url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/RB_upper.STL"
+                                      }
+                                    }
+                                    HingeJoint {
+                                      jointParameters HingeJointParameters {
+                                        axis 0.000000 0.000000 -1.000000
+                                        anchor 0.138407 -0.057823 0.000000
+                                      }
+                                      device [
+                                        RotationalMotor {
+                                          name "RB_motor"
+                                          maxTorque 10000
+                                        }
+                                        PositionSensor {
+                                          name "RB_motor_sensor"
+                                        }
+                                      ]
+                                      endPoint Solid {
+                                        translation 0.138407 -0.057823 0.000000
+                                        children [
+                                          Shape {
+                                            appearance DEF R_body_material PBRAppearance {
+                                              baseColor 0.792157 0.819608 0.933333
+                                              roughness 1.000000
+                                              metalness 0
+                                            }
+                                            geometry DEF R_body Mesh {
+                                              url "C:\Users\kaming\Desktop\FYP\webots\webots_testing/BFG3_model_3/meshes/R_body.STL"
+                                            }
+                                          }
+                                        ]
+                                        name "R_body"
+                                        boundingObject USE R_body
+                                        physics Physics {
+                                          density -1
+                                          mass 0.039270
+                                          centerOfMass [ 0.000000 0.000000 -0.010000 ]
+                                          inertiaMatrix [
+                                            7.444920e-06 7.444920e-06 1.227185e-05
+                                            5.886769e-23 -4.411630e-24 -1.411722e-22
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                  name "RB_upper"
+                                  boundingObject USE RB_upper
+                                  physics Physics {
+                                    density -1
+                                    mass 0.067686
+                                    centerOfMass [ 0.073394 -0.030699 -0.007992 ]
+                                    inertiaMatrix [
+                                      4.236092e-05 1.765346e-04 2.164349e-04
+                                      7.130186e-05 -5.466201e-21 1.918519e-21
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                            name "RB_below"
+                            boundingObject USE RB_below
+                            physics Physics {
+                              density -1
+                              mass 0.142829
+                              centerOfMass [ -0.094277 0.077768 0.010242 ]
+                              inertiaMatrix [
+                                4.318320e-04 6.146116e-04 1.041342e-03
+                                4.818807e-04 -7.691202e-20 6.711723e-20
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                      name "R_wheel"
+                      boundingObject USE R_wheel
+                      physics Physics {
+                        density -1
+                        mass 1.027189
+                        centerOfMass [ -0.000000 0.000000 0.061520 ]
+                        inertiaMatrix [
+                          1.648759e-03 1.648759e-03 2.659457e-03
+                          -1.174005e-19 1.276268e-19 3.641217e-20
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "RF_below"
+                boundingObject USE RF_below
+                physics Physics {
+                  density -1
+                  mass 0.132217
+                  centerOfMass [ -0.091353 -0.074228 -0.010964 ]
+                  inertiaMatrix [
+                    4.174902e-04 5.950857e-04 1.007834e-03
+                    -4.685137e-04 -1.425541e-19 -1.120334e-19
+                  ]
+                }
+              }
+            }
+          ]
+          name "RF_upper"
+          boundingObject USE RF_upper
+          physics Physics {
+            density -1
+            mass 0.073113
+            centerOfMass [ 0.060163 0.025169 -0.009662 ]
+            inertiaMatrix [
+              3.994873e-05 1.809124e-04 2.176978e-04
+              -6.794783e-05 6.426334e-23 -5.017640e-22
+            ]
+          }
+        }
+      }
+    ]
+    name IS name
+    boundingObject USE base_link
+    physics Physics {
+      density -1
+      mass 2.738575
+      centerOfMass [ 0.004334 -0.003063 -0.019412 ]
+      inertiaMatrix [
+        7.145292e-03 5.585055e-03 9.186840e-03
+        -1.659402e-07 3.516912e-05 -3.763532e-11
+      ]
+    }
+  }
+}

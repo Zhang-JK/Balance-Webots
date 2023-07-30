@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="BFG3_model_3">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00433394840682744 -0.00306320117180597 -0.0194116631633085"
+        rpy="0 0 0" />
+      <mass
+        value="2.73857462399271" />
+      <inertia
+        ixx="0.00714529233512344"
+        ixy="-1.65940222334059E-07"
+        ixz="3.51691176172551E-05"
+        iyy="0.00558505476211354"
+        iyz="-3.76353161715973E-11"
+        izz="0.00918684038293283" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="LF_upper">
+    <inertial>
+      <origin
+        xyz="0.0650130772930368 -0.0271236389517819 0.0150082445304447"
+        rpy="0 0 0" />
+      <mass
+        value="0.0676861146381243" />
+      <inertia
+        ixx="4.23609230157793E-05"
+        ixy="7.13018602415457E-05"
+        ixz="1.41300187765697E-19"
+        iyy="0.000176534584005962"
+        iyz="-9.58438348899675E-20"
+        izz="0.000216434942762677" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LF_upper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LF_upper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_motor"
+    type="continuous">
+    <origin
+      xyz="0.0549999999999999 0.162499997615819 0"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LF_upper" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="LF_below">
+    <inertial>
+      <origin
+        xyz="-0.0991295944129766 0.0806420105529512 0.0282418594945069"
+        rpy="0 0 0" />
+      <mass
+        value="0.142828758322776" />
+      <inertia
+        ixx="0.000431832046924401"
+        ixy="0.000481880745735413"
+        ixz="1.55660288226669E-18"
+        iyy="0.000614611631775238"
+        iyz="-1.36527637527773E-18"
+        izz="0.00104134203793489" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LF_below.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LF_below.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_leg_joint"
+    type="continuous">
+    <origin
+      xyz="0.138407000906351 -0.0578230239619941 0.00499999999999023"
+      rpy="0 0 0" />
+    <parent
+      link="LF_upper" />
+    <child
+      link="LF_below" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="L_wheel">
+    <inertial>
+      <origin
+        xyz="-1.97207528085386E-12 -2.45035589041542E-12 0.0800201771462317"
+        rpy="0 0 0" />
+      <mass
+        value="1.02718865196132" />
+      <inertia
+        ixx="0.0016487592134189"
+        ixy="4.7339965561253E-20"
+        ixz="-1.38498208063596E-19"
+        iyy="0.0016487592134189"
+        iyz="-3.29323630968878E-18"
+        izz="0.00265945663227123" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/L_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/L_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.193407000906352 0.158410012311121 -0.000499999999960976"
+      rpy="0 0 0" />
+    <parent
+      link="LF_below" />
+    <child
+      link="L_wheel" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="LB_below">
+    <inertial>
+      <origin
+        xyz="-0.102054497123397 -0.0841819775681431 0.00753564127891371"
+        rpy="0 0 0" />
+      <mass
+        value="0.132217168444247" />
+      <inertia
+        ixx="0.000417490221829177"
+        ixy="-0.00046851371376093"
+        ixz="-3.29018223106585E-20"
+        iyy="0.000595085702441836"
+        iyz="-2.72862494556802E-20"
+        izz="0.00100783361765157" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LB_below.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LB_below.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LB_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="L_wheel" />
+    <child
+      link="LB_below" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="LB_upper">
+    <inertial>
+      <origin
+        xyz="0.0782441113208532 0.0326540004693341 -0.00966245795925946"
+        rpy="0 0 0" />
+      <mass
+        value="0.0731130195976598" />
+      <inertia
+        ixx="3.99487339618615E-05"
+        ixy="-6.79478327864683E-05"
+        ixz="1.49712963814763E-21"
+        iyy="0.000180912418922268"
+        iyz="1.18936433976975E-21"
+        izz="0.000217697804432806" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LB_upper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/LB_upper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LB_leg_joint"
+    type="continuous">
+    <origin
+      xyz="-0.193407000906358 -0.158410012311107 0.0334999999999795"
+      rpy="0 0 0" />
+    <parent
+      link="LB_below" />
+    <child
+      link="LB_upper" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="L_body">
+    <inertial>
+      <origin
+        xyz="-6.21724893790088E-15 1.12826414877532E-14 -0.0100000000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.0392699081698724" />
+      <inertia
+        ixx="7.44492009053832E-06"
+        ixy="6.24245635606682E-22"
+        ixz="-1.30551799527545E-21"
+        iyy="7.44492009053833E-06"
+        iyz="-1.1484295449125E-20"
+        izz="1.22718463030851E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/L_body.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/L_body.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LB_motor"
+    type="continuous">
+    <origin
+      xyz="0.138407000906364 0.0578230239619683 0"
+      rpy="0 0 0" />
+    <parent
+      link="LB_upper" />
+    <child
+      link="L_body" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="RF_upper">
+    <inertial>
+      <origin
+        xyz="0.0601628895872412 0.0251690234884734 -0.00966245795926873"
+        rpy="0 0 0" />
+      <mass
+        value="0.0731130195976597" />
+      <inertia
+        ixx="3.99487339522099E-05"
+        ixy="-6.79478327764567E-05"
+        ixz="6.42633394498208E-23"
+        iyy="0.00018091241893192"
+        iyz="-5.01764045413152E-22"
+        izz="0.000217697804432806" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RF_upper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RF_upper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_motor"
+    type="continuous">
+    <origin
+      xyz="0.0550000000000001 -0.200499997615813 0"
+      rpy="1.57079632679489 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RF_upper" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="RF_below">
+    <inertial>
+      <origin
+        xyz="-0.0913525037817211 -0.0742280347492391 -0.010964358721066"
+        rpy="0 0 0" />
+      <mass
+        value="0.132217168444246" />
+      <inertia
+        ixx="0.0004174902217937"
+        ixy="-0.000468513713754205"
+        ixz="-1.42554144249149E-19"
+        iyy="0.000595085702477311"
+        iyz="-1.12033415386888E-19"
+        izz="0.00100783361765156" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RF_below.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RF_below.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_leg_joint"
+    type="continuous">
+    <origin
+      xyz="0.138407000906351 0.0578230239620069 -0.0150000000000091"
+      rpy="0 0 0" />
+    <parent
+      link="RF_upper" />
+    <child
+      link="RF_below" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="R_wheel">
+    <inertial>
+      <origin
+        xyz="-5.13478148889135E-15 9.95731275210687E-16 0.0615201771463214"
+        rpy="0 0 0" />
+      <mass
+        value="1.02718865196132" />
+      <inertia
+        ixx="0.00164875921341889"
+        ixy="-1.17400531141419E-19"
+        ixz="1.2762679312884E-19"
+        iyy="0.00164875921341889"
+        iyz="3.64121739936261E-20"
+        izz="0.00265945663227123" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/R_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/R_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.193407000906351 -0.158410012311123 0"
+      rpy="0 0 0" />
+    <parent
+      link="RF_below" />
+    <child
+      link="R_wheel" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="RB_below">
+    <inertial>
+      <origin
+        xyz="-0.0942774064944109 0.0777680017568626 0.0102418594945577"
+        rpy="0 0 0" />
+      <mass
+        value="0.142828758322776" />
+      <inertia
+        ixx="0.000431832046935968"
+        ixy="0.000481880745737607"
+        ixz="-7.69120193822425E-20"
+        iyy="0.00061461163176367"
+        iyz="6.71172264470521E-20"
+        izz="0.00104134203793489" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RB_below.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RB_below.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RB_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="R_wheel" />
+    <child
+      link="RB_below" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="RB_upper">
+    <inertial>
+      <origin
+        xyz="0.0733939236133498 -0.0306993850102447 -0.00799175546953923"
+        rpy="0 0 0" />
+      <mass
+        value="0.0676861146381242" />
+      <inertia
+        ixx="4.23609230157796E-05"
+        ixy="7.1301860241546E-05"
+        ixz="-5.46620114460207E-21"
+        iyy="0.000176534584005962"
+        iyz="1.91851861993158E-21"
+        izz="0.000216434942762677" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RB_upper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/RB_upper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RB_leg_joint"
+    type="continuous">
+    <origin
+      xyz="-0.193407000906353 0.15841001231112 0"
+      rpy="0 0 0" />
+    <parent
+      link="RB_below" />
+    <child
+      link="RB_upper" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="R_body">
+    <inertial>
+      <origin
+        xyz="1.18238752122579E-14 2.12468931337639E-14 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.0392699081698724" />
+      <inertia
+        ixx="7.44492009053832E-06"
+        ixy="5.88676869266915E-23"
+        ixz="-4.41162993361756E-24"
+        iyy="7.44492009053832E-06"
+        iyz="-1.41172157875708E-22"
+        izz="1.22718463030851E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/R_body.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BFG3_model_3/meshes/R_body.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RB_motor"
+    type="continuous">
+    <origin
+      xyz="0.138407000906342 -0.0578230239620111 0"
+      rpy="0 0 0" />
+    <parent
+      link="RB_upper" />
+    <child
+      link="R_body" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+</robot>
