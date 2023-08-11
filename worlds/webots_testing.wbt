@@ -7,8 +7,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.24103616058977517 -0.1397106754742027 -0.9604074637603991 3.8914202492345202
-  position 0.9389734310005362 -1.0600261552393515 1.1337936558462725
+  orientation 0.17219952538386765 -0.48222516201285265 -0.8589564695485148 5.199692586659243
+  position -1.1873713904670116 -2.082743859772334 1.5845052272632494
 }
 TexturedBackground {
 }
@@ -37,6 +37,7 @@ DEF BF Robot {
           "../BFG3_model_3/meshes/base_link.STL"
         ]
       }
+      castShadows FALSE
     }
     HingeJoint {
       jointParameters HingeJointParameters {
@@ -95,6 +96,7 @@ DEF BF Robot {
                       name "L_motor"
                     }
                     DEF L_encoder PositionSensor {
+                      name "L_encoder"
                     }
                   ]
                   endPoint DEF L_wheel_solid Solid {
@@ -157,6 +159,7 @@ DEF BF Robot {
                                         maxTorque 30
                                       }
                                       DEF LB_encoder PositionSensor {
+                                        name "LB_encoder"
                                       }
                                     ]
                                     endPoint SolidReference {
@@ -204,6 +207,7 @@ DEF BF Robot {
           maxTorque 30
         }
         DEF RF_encoder PositionSensor {
+          name "RF_encoder"
         }
       ]
       endPoint DEF RF_upper_solid Solid {
@@ -247,6 +251,7 @@ DEF BF Robot {
                       name "R_motor"
                     }
                     DEF R_encoder PositionSensor {
+                      name "R_encoder"
                     }
                   ]
                   endPoint DEF R_wheel Solid {
@@ -304,6 +309,7 @@ DEF BF Robot {
                                         maxTorque 30
                                       }
                                       PositionSensor {
+                                        name "RB_encoder"
                                       }
                                     ]
                                     endPoint SolidReference {
@@ -342,7 +348,9 @@ DEF BF Robot {
       }
     }
   ]
-  boundingObject USE Body
+  boundingObject Box {
+    size 0.5 0.36 0.2
+  }
   physics Physics {
   }
   locked TRUE

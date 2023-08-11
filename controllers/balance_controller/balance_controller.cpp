@@ -91,16 +91,23 @@ int main(int argc, char **argv)
 
     while (robot->step(TIME_STEP) != -1)
     {
-        float RF_pos = LF->getPosition();
-        float RB_pos = LB->getPosition();
-        LF->setTorque(-0.5f);
-        LB->setTorque(-0.5f);
-        RF->setTorque(0.5f);
-        RB->setTorque(0.5f);
+        float LF_pos = LF->getPosition();
+        float LB_pos = LB->getPosition();
+        float RF_pos = RF->getPosition();
+        float RB_pos = RB->getPosition();
+
+        LF->setPosition(-0.38f);
+        LB->setPosition(-0.38f);
+        RF->setPosition(0.38f);
+        RB->setPosition(0.38f);
+        // LF->setTorque(-0.5f);
+        // LB->setTorque(-0.5f);
+        // RF->setTorque(0.5f);
+        // RB->setTorque(0.5f);
         // R->setTorque(-1.0f);
         // float L_pos = L->getPosition();
 
-        printf("%f %f\n", RF_pos, RB_pos);
+        printf("%f %f %f %f\n", RF_pos, RB_pos, LF_pos, LB_pos);
     }
     delete robot;
 
