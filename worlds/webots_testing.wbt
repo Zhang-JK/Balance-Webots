@@ -28,7 +28,7 @@ DEF BF Robot {
       }
       geometry Mesh {
         url [
-          "../BFG3_model_3/meshes/base_link.STL"
+          "../BFG3_model_3/meshes/base_link.obj"
         ]
       }
     }
@@ -47,7 +47,7 @@ DEF BF Robot {
             }
             geometry Mesh {
               url [
-                "../BFG3_model_3/meshes/LF_upper.STL"
+                "../BFG3_model_3/meshes/LF_upper.obj"
               ]
             }
           }
@@ -57,7 +57,7 @@ DEF BF Robot {
               anchor 0.13841 -0.057823 0.005
             }
             endPoint DEF LF_lower_soild Solid {
-              translation 0.13841 -0.057823 0.005
+              translation 0.138407 -0.057823 0.005
               rotation 0 0 -1 0
               children [
                 DEF LF_lower Shape {
@@ -66,17 +66,17 @@ DEF BF Robot {
                   }
                   geometry Mesh {
                     url [
-                      "../BFG3_model_3/meshes/LF_below.STL"
+                      "../BFG3_model_3/meshes/LF_below.obj"
                     ]
                   }
                 }
                 HingeJoint {
                   jointParameters HingeJointParameters {
                     axis 0 0 -1
-                    anchor -0.19341 0.15841 -0.0005
+                    anchor -0.193407 0.158410 -0.000500
                   }
                   endPoint DEF L_wheel_solid Solid {
-                    translation -0.19341 0.15841 -0.0005
+                    translation -0.193407 0.158410 -0.000500
                     rotation 0 0 -1 0
                     children [
                       DEF L_wheel Shape {
@@ -84,7 +84,7 @@ DEF BF Robot {
                         }
                         geometry Mesh {
                           url [
-                            "../BFG3_model_3/meshes/L_wheel.STL"
+                            "../BFG3_model_3/meshes/L_wheel.obj"
                           ]
                         }
                       }
@@ -101,17 +101,17 @@ DEF BF Robot {
                               }
                               geometry Mesh {
                                 url [
-                                  "../BFG3_model_3/meshes/LB_below.STL"
+                                  "../BFG3_model_3/meshes/LB_below.obj"
                                 ]
                               }
                             }
                             HingeJoint {
                               jointParameters HingeJointParameters {
                                 axis 0 0 -1
-                                anchor -0.19341 -0.15841 0.0335
+                                anchor -0.193407 -0.158410 0.033500
                               }
                               endPoint DEF LB_upper_solid Solid {
-                                translation -0.19341 -0.15841 0.0335
+                                translation  -0.193407 -0.158410 0.033500
                                 rotation 0 0 -1 0
                                 children [
                                   DEF LB_upper Shape {
@@ -120,14 +120,14 @@ DEF BF Robot {
                                     }
                                     geometry Mesh {
                                       url [
-                                        "../BFG3_model_3/meshes/LB_upper.STL"
+                                        "../BFG3_model_3/meshes/LB_upper.obj"
                                       ]
                                     }
                                   }
                                   HingeJoint {
                                     jointParameters HingeJointParameters {
                                       axis 0 0 -1
-                                      anchor 0.13841 0.057823 0
+                                      anchor 0.138407 0.057823 0.000000
                                     }
                                     endPoint SolidReference {
                                       solidName "robot"
@@ -170,7 +170,7 @@ DEF BF Robot {
       }
       endPoint DEF RF_upper_solid Solid {
         translation 0.055 -0.2005 0
-        rotation 1 0 0 1.5708
+        rotation 1.000000 0.000000 0.000000 1.570796
         children [
           DEF RF_upper Shape {
             appearance PBRAppearance {
@@ -178,24 +178,24 @@ DEF BF Robot {
             }
             geometry Mesh {
               url [
-                "../BFG3_model_3/meshes/RF_upper.STL"
+                "../BFG3_model_3/meshes/RF_upper.obj"
               ]
             }
           }
           HingeJoint {
             jointParameters HingeJointParameters {
               axis 0 0 1
-              anchor 0.13841 0.057823 -0.015
+              anchor 0.138407 0.057823 -0.015000
             }
             endPoint DEF RF_below_solid Solid {
-              translation 0.13841 0.057823 -0.015
+              translation  0.138407 0.057823 -0.015000
               children [
                 DEF RF_below Shape {
                   appearance PBRAppearance {
                   }
                   geometry Mesh {
                     url [
-                      "../BFG3_model_3/meshes/RF_below.STL"
+                      "../BFG3_model_3/meshes/RF_below.obj"
                     ]
                   }
                 }
@@ -212,7 +212,7 @@ DEF BF Robot {
                         }
                         geometry Mesh {
                           url [
-                            "../BFG3_model_3/meshes/R_wheel.STL"
+                            "../BFG3_model_3/meshes/R_wheel.obj"
                           ]
                         }
                       }
@@ -227,7 +227,7 @@ DEF BF Robot {
                               }
                               geometry Mesh {
                                 url [
-                                  "../BFG3_model_3/meshes/RB_below.STL"
+                                  "../BFG3_model_3/meshes/RB_below.obj"
                                 ]
                               }
                             }
@@ -237,14 +237,14 @@ DEF BF Robot {
                                 anchor -0.193407 0.15841 0
                               }
                               endPoint DEF RB_upper_solid Solid {
-                                translation -0.193407 0.15841 0
+                                translation -0.193407 0.158410 0.000000
                                 children [
                                   DEF RB_upper Shape {
                                     appearance PBRAppearance {
                                     }
                                     geometry Mesh {
                                       url [
-                                        "../BFG3_model_3/meshes/RB_upper.STL"
+                                        "../BFG3_model_3/meshes_stl/RB_upper.stl"
                                       ]
                                     }
                                   }
