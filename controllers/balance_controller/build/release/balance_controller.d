@@ -11,4 +11,5 @@ build/release/balance_controller.o: balance_controller.cpp \
  C:\Program\ Files\Webots/include/controller/cpp/webots/InertialUnit.hpp \
  C:\Program\ Files\Webots/include/controller/cpp/webots/Gyro.hpp \
  C:\Program\ Files\Webots/include/controller/cpp/webots/Accelerometer.hpp \
- C:\Program\ Files\Webots/include/controller/cpp/webots/PositionSensor.hpp
+ C:\Program\ Files\Webots/include/controller/cpp/webots/PositionSensor.hpp \
+ VMC.hpp OLS.hpp

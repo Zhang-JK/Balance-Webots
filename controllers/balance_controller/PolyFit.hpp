@@ -1,6 +1,4 @@
 #pragma once
-#include "Eigen/Dense"
-#include "arm_math.h"
 #include "math.h"
 
 // first gen
@@ -155,8 +153,8 @@ inline float polyNewNewNewNew2[6][4] = {{519.64, -448.32, 11.19, 21.421},
 
 void fit(float length, float lqrK[2][6])
 {
-    float length2 = pow(length, 2);
-    float length3 = pow(length, 3);
+    float length2 = powf(length, 2);
+    float length3 = powf(length, 3);
 
     for (int j = 0; j < 6; j++)
     {

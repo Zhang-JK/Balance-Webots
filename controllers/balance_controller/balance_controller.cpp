@@ -8,6 +8,10 @@
 #include <webots/PositionSensor.hpp>
 // #include "PID.h"
 #include <windows.h>
+
+#include "VMC.hpp"
+#include "OLS.hpp"
+
 #define TIME_STEP 8
 
 #define getPosition getPositionSensor()->getValue
@@ -17,6 +21,7 @@
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
+using namespace VMC;
 
 int main(int argc, char **argv)
 {
@@ -40,11 +45,15 @@ int main(int argc, char **argv)
     Motor *R = robot->getMotor("R_motor");
 
     LF->getPositionSensor()->enable(TIME_STEP);
+    LF->enableTorqueFeedback(TIME_STEP);
     LB->getPositionSensor()->enable(TIME_STEP);
+    LB->enableTorqueFeedback(TIME_STEP);
     L->getPositionSensor()->enable(TIME_STEP);
 
     RF->getPositionSensor()->enable(TIME_STEP);
+    RF->enableTorqueFeedback(TIME_STEP);
     RB->getPositionSensor()->enable(TIME_STEP);
+    RB->enableTorqueFeedback(TIME_STEP);
     R->getPositionSensor()->enable(TIME_STEP);
 
     // Motor *leftWheel = robot->getMotor("motorLeft");
@@ -89,17 +98,68 @@ int main(int argc, char **argv)
     //            setpoint, measurement, leftMotor->getVelocity(), -pid.out);
     // };
 
+    OLSMethod<7> olsLPhi1;
+    OLSMethod<7> olsLPhi4;
+    OLSMethod<7> olsRPhi1;
+    OLSMethod<7> olsRPhi4;
+
+    OLSMethod<7> olsLSpeed;
+    OLSMethod<7> olsRSpeed;
+
+    float motorSpeed[2] = {};
+    float imuSpeed = 0.0f;
+    float currentStatesL[6] = {};
+    float currentStatesR[6] = {};
+    float targetStates[6] = {};
+    float lqrK[2][6];
+    VirtualToeState lLegVirtualToeState;
+    VirtualToeState rLegVirtualToeState;
+    MotorState lLegMotorState;
+    MotorState rLegMotorState;
+
     while (robot->step(TIME_STEP) != -1)
     {
-        float LF_pos = LF->getPosition();
-        float LB_pos = LB->getPosition();
-        float RF_pos = RF->getPosition();
-        float RB_pos = RB->getPosition();
+        /* update leg motor states */
+        lLegMotorState.T1 = LF->getTorqueFeedback();
+        lLegMotorState.phi1 = LF->getPosition() + 0.38f + M_PI;
+        lLegMotorState.phi1Dot = olsLPhi1.derivative(lLegMotorState.phi1, TIME_STEP / 1000.0f);
+        lLegMotorState.T2 = -LB->getTorqueFeedback();
+        lLegMotorState.phi4 = -LB->getPosition() - 0.38f;
+        lLegMotorState.phi4Dot = olsLPhi4.derivative(lLegMotorState.phi4, TIME_STEP / 1000.0f);
 
-        LF->setPosition(-0.38f);
-        LB->setPosition(-0.38f);
-        RF->setPosition(0.38f);
-        RB->setPosition(0.38f);
+        rLegMotorState.T1 = -RF->getTorqueFeedback();
+        rLegMotorState.phi1 = -RF->getPosition() + 0.38f + M_PI;
+        rLegMotorState.phi1Dot = olsRPhi1.derivative(rLegMotorState.phi1, TIME_STEP / 1000.0f);
+        rLegMotorState.T2 = RB->getTorqueFeedback();
+        rLegMotorState.phi4 = RB->getPosition() - 0.38f;
+        rLegMotorState.phi4Dot = olsRPhi4.derivative(rLegMotorState.phi4, TIME_STEP / 1000.0f);
+
+        /* update VMC */
+        lLegVirtualToeState = calcVirtualToeState(lLegMotorState,
+                                                  TIME_STEP / 1000.0f);
+        rLegVirtualToeState = calcVirtualToeState(rLegMotorState,
+                                                  TIME_STEP / 1000.0f);
+
+        /* estimate speed */
+        motorSpeed[0] = olsLSpeed.derivative(L->getPosition(), TIME_STEP / 1000.0f);
+        motorSpeed[1] = olsRSpeed.derivative(R->getPosition(), TIME_STEP / 1000.0f);
+
+        /* update status */
+        // currentStates[0] = gyro->getValues()[0]; // leg
+        // currentStates[1] = gyro->getValues()[1];
+        // currentStates[2] = gyro->getValues()[2]; // speed
+        // currentStates[3] = accelerometer->getValues()[0];
+        // currentStates[4] = accelerometer->getValues()[1]; // body
+        // currentStates[5] = accelerometer->getValues()[2];
+
+        // LF->setPosition(-0.38f);
+        // LB->setPosition(-0.38f);
+        // RF->setPosition(0.38f);
+        // RB->setPosition(0.38f);
+                LF->setPosition(0);
+        LB->setPosition(0);
+        RF->setPosition(0);
+        RB->setPosition(0);
         // LF->setTorque(-0.5f);
         // LB->setTorque(-0.5f);
         // RF->setTorque(0.5f);
@@ -107,7 +167,9 @@ int main(int argc, char **argv)
         // R->setTorque(-1.0f);
         // float L_pos = L->getPosition();
 
-        printf("%f %f %f %f\n", RF_pos, RB_pos, LF_pos, LB_pos);
+        // printf("%f %f %f %f\n", RF_pos, RB_pos, LF_pos, LB_pos);
+        printf("%f %f %f %f\n", lLegVirtualToeState.l0, lLegVirtualToeState.phi0, rLegVirtualToeState.l0, rLegVirtualToeState.phi0);
+        // printf("%f %f %f %f\n", lLegMotorState.phi1, lLegMotorState.phi4,rLegMotorState.phi1, rLegMotorState.phi4);
     }
     delete robot;
 
