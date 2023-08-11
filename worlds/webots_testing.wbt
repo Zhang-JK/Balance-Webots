@@ -7,8 +7,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.21123352105725693 0.7599760224687835 0.6146680769767373 1.1034644763398198
-  position -0.7864491254202757 -0.9444684915560005 1.3592396917916378
+  orientation 0.24103616058977517 -0.1397106754742027 -0.9604074637603991 3.8914202492345202
+  position 0.9389734310005362 -1.0600261552393515 1.1337936558462725
 }
 TexturedBackground {
 }
@@ -21,6 +21,12 @@ RectangleArena {
 DEF BF Robot {
   translation 0 0 0.3
   children [
+    Gyro {
+    }
+    Accelerometer {
+    }
+    InertialUnit {
+    }
     DEF Body Shape {
       appearance PBRAppearance {
         baseColor 0.792157 0.819608 0.933333
@@ -37,6 +43,15 @@ DEF BF Robot {
         axis 0 -1 0
         anchor 0.055 0.1625 0
       }
+      device [
+        DEF LF_motor RotationalMotor {
+          name "LF_motor"
+          maxTorque 30
+        }
+        PositionSensor {
+          name "LF_encoder"
+        }
+      ]
       endPoint DEF LF_upper_soild Solid {
         translation 0.055 0.1625 0
         rotation -1 -2.747656756347831e-16 -3.925223937639759e-17 1.5707999999999998
@@ -75,6 +90,13 @@ DEF BF Robot {
                     axis 0 0 -1
                     anchor -0.19341 0.15841 -0.0005
                   }
+                  device [
+                    DEF L_motor RotationalMotor {
+                      name "L_motor"
+                    }
+                    DEF L_encoder PositionSensor {
+                    }
+                  ]
                   endPoint DEF L_wheel_solid Solid {
                     translation -0.19341 0.15841 -0.0005
                     rotation 0 0 -1 0
@@ -129,6 +151,14 @@ DEF BF Robot {
                                       axis 0 0 -1
                                       anchor 0.13841 0.057823 0
                                     }
+                                    device [
+                                      DEF LB_motor RotationalMotor {
+                                        name "LB_motor"
+                                        maxTorque 30
+                                      }
+                                      DEF LB_encoder PositionSensor {
+                                      }
+                                    ]
                                     endPoint SolidReference {
                                       solidName "robot"
                                     }
@@ -168,6 +198,14 @@ DEF BF Robot {
         axis 0 1 0
         anchor 0.055 -0.2005 0
       }
+      device [
+        DEF RF_motor RotationalMotor {
+          name "RF_motor"
+          maxTorque 30
+        }
+        DEF RF_encoder PositionSensor {
+        }
+      ]
       endPoint DEF RF_upper_solid Solid {
         translation 0.055 -0.2005 0
         rotation 1 0 0 1.5708
@@ -204,6 +242,13 @@ DEF BF Robot {
                     axis 0 0 -1
                     anchor -0.193407 -0.15841 0
                   }
+                  device [
+                    DEF R_motor RotationalMotor {
+                      name "R_motor"
+                    }
+                    DEF R_encoder PositionSensor {
+                    }
+                  ]
                   endPoint DEF R_wheel Solid {
                     translation -0.193407 -0.15841 0
                     children [
@@ -253,6 +298,14 @@ DEF BF Robot {
                                       axis 0 0 -1
                                       anchor 0.138407 -0.057823 0
                                     }
+                                    device [
+                                      DEF RB_motor RotationalMotor {
+                                        name "RB_motor"
+                                        maxTorque 30
+                                      }
+                                      PositionSensor {
+                                      }
+                                    ]
                                     endPoint SolidReference {
                                       solidName "robot"
                                     }
@@ -292,4 +345,6 @@ DEF BF Robot {
   boundingObject USE Body
   physics Physics {
   }
+  locked TRUE
+  controller "balance_controller"
 }
