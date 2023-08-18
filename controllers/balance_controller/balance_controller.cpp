@@ -1,13 +1,13 @@
 #include <webots/Robot.hpp>
-#include <webots/supervisor.hpp>
-#include <webots/keyboard.hpp>
+#include <webots/Supervisor.hpp>
+#include <webots/Keyboard.hpp>
 #include <webots/Motor.hpp>
 #include <webots/InertialUnit.hpp>
 #include <webots/Gyro.hpp>
 #include <webots/Accelerometer.hpp>
 #include <webots/PositionSensor.hpp>
 // #include "PID.h"
-#include <windows.h>
+// #include <windows.h>
 
 #include "VMC.hpp"
 #include "OLS.hpp"
@@ -156,7 +156,7 @@ int main(int argc, char **argv)
         // LB->setPosition(-0.38f);
         // RF->setPosition(0.38f);
         // RB->setPosition(0.38f);
-                LF->setPosition(0);
+        LF->setPosition(0);
         LB->setPosition(0);
         RF->setPosition(0);
         RB->setPosition(0);

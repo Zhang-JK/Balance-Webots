@@ -12,6 +12,7 @@
 #pragma once
 #include "math.h"
 #include "stdint.h"
+#include "string.h"
 
 // If the order of function is less than 3, the OLS method is not suitable.
 template <uint16_t order, typename T = float>

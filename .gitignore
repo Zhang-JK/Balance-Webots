@@ -1,0 +1,24 @@
+.vscode
+
+# Packages
+*.7z
+*.bz2
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.xz
+*.zip
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.directory
+ehthumbs.db
+Thumbs.db
+*.swp
