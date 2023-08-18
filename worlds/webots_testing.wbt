@@ -7,19 +7,20 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.17219952538386765 -0.48222516201285265 -0.8589564695485148 5.199692586659243
-  position -1.1873713904670116 -2.082743859772334 1.5845052272632494
+  orientation 0.14453351814065077 -0.22407842886657758 -0.9637940235603104 4.727883334521094
+  position -0.08350869630191485 -0.9466927205988368 0.38156521776808805
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  translation 0 0 -0.11
+  translation 0.113412 -0.154595 -0.11
   floorSize 5 5
 }
 DEF BF Robot {
-  translation 0 0 0.3
+  translation 0.06139075631259311 0.00031865895995562615 0.06439304215100745
+  rotation 0.0015581849968980288 0.9999356240034879 -0.011239212973817891 0.094332627472808
   children [
     Gyro {
     }
@@ -41,6 +42,7 @@ DEF BF Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 6.740157891041244e-07
         axis 0 -1 0
         anchor 0.055 0.1625 0
       }
@@ -54,8 +56,8 @@ DEF BF Robot {
         }
       ]
       endPoint DEF LF_upper_soild Solid {
-        translation 0.055 0.1625 0
-        rotation -1 -2.747656756347831e-16 -3.925223937639759e-17 1.5707999999999998
+        translation 0.05518263427661764 0.16249957436949236 0.000148943978626788
+        rotation -0.9999999999788033 -1.1781105326835307e-06 -6.40353205683593e-06 1.5707904277961025
         children [
           DEF LF_upper Shape {
             appearance PBRAppearance {
@@ -69,12 +71,13 @@ DEF BF Robot {
           }
           HingeJoint {
             jointParameters HingeJointParameters {
+              position -0.00473385681014595
               axis 0 0 -1
               anchor 0.13841 -0.057823 0.005
             }
             endPoint DEF LF_lower_soild Solid {
-              translation 0.138407 -0.057823 0.005
-              rotation 0 0 -1 0
+              translation 0.13840700003361403 -0.057823014201517385 0.005
+              rotation 0 0 1 0.004733856810172323
               children [
                 DEF LF_lower Shape {
                   appearance PBRAppearance {
@@ -88,8 +91,9 @@ DEF BF Robot {
                 }
                 HingeJoint {
                   jointParameters HingeJointParameters {
+                    position 8.866855731668476e-06
                     axis 0 0 -1
-                    anchor -0.193407 0.158410 -0.000500
+                    anchor -0.193407 0.15841 -0.0005
                   }
                   device [
                     DEF L_motor RotationalMotor {
@@ -100,8 +104,8 @@ DEF BF Robot {
                     }
                   ]
                   endPoint DEF L_wheel_solid Solid {
-                    translation -0.193407 0.158410 -0.000500
-                    rotation 0 0 -1 0
+                    translation -0.193407 0.15841 -0.0005
+                    rotation 0 0 -1 8.866879592730684e-06
                     children [
                       DEF L_wheel Shape {
                         appearance PBRAppearance {
@@ -114,10 +118,11 @@ DEF BF Robot {
                       }
                       HingeJoint {
                         jointParameters HingeJointParameters {
+                          position 0.01141539600094391
                           axis 0 0 -1
                         }
                         endPoint DEF LB_below_solid Solid {
-                          rotation 0 0 -1 0
+                          rotation 0 0 -1 0.011415396000953516
                           children [
                             DEF LB_below Shape {
                               appearance PBRAppearance {
@@ -131,12 +136,13 @@ DEF BF Robot {
                             }
                             HingeJoint {
                               jointParameters HingeJointParameters {
+                                position -0.006673009842088482
                                 axis 0 0 -1
-                                anchor -0.193407 -0.158410 0.033500
+                                anchor -0.193407 -0.15841 0.0335
                               }
                               endPoint DEF LB_upper_solid Solid {
-                                translation  -0.193407 -0.158410 0.033500
-                                rotation 0 0 -1 0
+                                translation -0.193407 -0.15841 0.0335
+                                rotation 0 0 0.9999999999999999 0.006673009842095899
                                 children [
                                   DEF LB_upper Shape {
                                     appearance PBRAppearance {
@@ -150,8 +156,9 @@ DEF BF Robot {
                                   }
                                   HingeJoint {
                                     jointParameters HingeJointParameters {
+                                      position 6.036306548000982e-07
                                       axis 0 0 -1
-                                      anchor 0.138407 0.057823 0.000000
+                                      anchor 0.138407 0.057823 0
                                     }
                                     device [
                                       DEF LB_motor RotationalMotor {
@@ -170,34 +177,45 @@ DEF BF Robot {
                                 boundingObject USE LB_upper
                                 physics Physics {
                                 }
+                                linearVelocity 2.4111471756324894e-07 -3.52484934252048e-07 6.182930782681747e-08
+                                angularVelocity 1.2002648081676647e-06 -2.2631844570079854e-06 6.304448005497039e-07
                               }
                             }
                           ]
                           boundingObject USE LB_below
                           physics Physics {
                           }
+                          linearVelocity 4.4944419917097785e-07 -2.8362165493591334e-07 -1.329809791084655e-07
+                          angularVelocity 1.2079735809273338e-06 -1.7133446760805431e-06 6.242341221640311e-07
                         }
                       }
                     ]
                     boundingObject USE L_wheel
                     physics Physics {
                     }
+                    linearVelocity 7.158872978003342e-07 -9.464549997383107e-08 -2.7317400335580042e-08
+                    angularVelocity 1.2197636679530128e-06 9.729151116647849e-06 6.113940919093945e-07
                   }
                 }
               ]
               boundingObject USE LF_lower
               physics Physics {
               }
+              linearVelocity 6.026179294285808e-07 -1.275638018893516e-07 -1.6048150268425861e-07
+              angularVelocity 1.205564203250777e-06 -7.69973775953244e-07 6.184202069465128e-07
             }
           }
         ]
         boundingObject USE LF_upper
         physics Physics {
         }
+        linearVelocity 3.5640850007373137e-07 -1.800133509292376e-07 1.0276634405275738e-07
+        angularVelocity 1.206632543045108e-06 4.727022431988115e-06 6.299856682580499e-07
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position -7.060639708436834e-07
         axis 0 1 0
         anchor 0.055 -0.2005 0
       }
@@ -211,8 +229,8 @@ DEF BF Robot {
         }
       ]
       endPoint DEF RF_upper_solid Solid {
-        translation 0.055 -0.2005 0
-        rotation 1.000000 0.000000 0.000000 1.570796
+        translation 0.05519606136058206 -0.2004997435641305 0.00015433489600390148
+        rotation 0.9999999999913383 -2.6765132104127197e-06 3.1874195035627584e-06 1.5707896645587283
         children [
           DEF RF_upper Shape {
             appearance PBRAppearance {
@@ -226,11 +244,13 @@ DEF BF Robot {
           }
           HingeJoint {
             jointParameters HingeJointParameters {
+              position -0.0048332675449204296
               axis 0 0 1
-              anchor 0.138407 0.057823 -0.015000
+              anchor 0.138407 0.057823 -0.015
             }
             endPoint DEF RF_below_solid Solid {
-              translation  0.138407 0.057823 -0.015000
+              translation 0.138407 0.057823 -0.015
+              rotation 0 0 -1 0.0048332675449228105
               children [
                 DEF RF_below Shape {
                   appearance PBRAppearance {
@@ -243,6 +263,7 @@ DEF BF Robot {
                 }
                 HingeJoint {
                   jointParameters HingeJointParameters {
+                    position 9.95824915240409e-06
                     axis 0 0 -1
                     anchor -0.193407 -0.15841 0
                   }
@@ -256,6 +277,7 @@ DEF BF Robot {
                   ]
                   endPoint DEF R_wheel Solid {
                     translation -0.193407 -0.15841 0
+                    rotation 0 0 -1 9.958257724951854e-06
                     children [
                       DEF R_wheel Shape {
                         appearance PBRAppearance {
@@ -268,9 +290,11 @@ DEF BF Robot {
                       }
                       HingeJoint {
                         jointParameters HingeJointParameters {
+                          position -0.01216048777778394
                           axis 0 0 -1
                         }
                         endPoint DEF RB_below Solid {
+                          rotation 0 0 1 0.012160487777781843
                           children [
                             DEF RB_below Shape {
                               appearance PBRAppearance {
@@ -283,23 +307,26 @@ DEF BF Robot {
                             }
                             HingeJoint {
                               jointParameters HingeJointParameters {
+                                position 0.007316491664701178
                                 axis 0 0 -1
                                 anchor -0.193407 0.15841 0
                               }
                               endPoint DEF RB_upper_solid Solid {
-                                translation -0.193407 0.158410 0.000000
+                                translation -0.19341077289832728 0.15841481234437704 -2.546662214442107e-09
+                                rotation -1.3503387072950756e-05 4.1151783096112287e-07 -0.9999999999087447 0.0073164917683435455
                                 children [
                                   DEF RB_upper Shape {
                                     appearance PBRAppearance {
                                     }
                                     geometry Mesh {
                                       url [
-                                        "../BFG3_model_3/meshes_stl/RB_upper.stl"
+                                        "../BFG3_model_3/meshes/RB_upper.obj"
                                       ]
                                     }
                                   }
                                   HingeJoint {
                                     jointParameters HingeJointParameters {
+                                      position -6.35660746820394e-07
                                       axis 0 0 -1
                                       anchor 0.138407 -0.057823 0
                                     }
@@ -320,24 +347,32 @@ DEF BF Robot {
                                 boundingObject USE RB_upper
                                 physics Physics {
                                 }
+                                linearVelocity 2.248098336495305e-06 -4.3606153023487836e-07 9.697266470650354e-07
+                                angularVelocity 1.219117271320217e-06 1.8244873121983e-05 6.496065788163388e-07
                               }
                             }
                           ]
                           boundingObject USE RB_below
                           physics Physics {
                           }
+                          linearVelocity 1.345795697852357e-06 -2.7332872759498523e-07 1.072529847270446e-06
+                          angularVelocity 1.2131854115885653e-06 8.87825062382366e-06 6.596439075038903e-07
                         }
                       }
                     ]
                     boundingObject USE R_wheel
                     physics Physics {
                     }
+                    linearVelocity 8.248377312831338e-07 -9.544243699849318e-08 9.055016151147268e-09
+                    angularVelocity 1.217357534609449e-06 1.130531555084859e-05 6.682129146537296e-07
                   }
                 }
               ]
               boundingObject USE RF_below
               physics Physics {
               }
+              linearVelocity 7.668463192657081e-07 -1.2724550650266933e-07 -2.9086791596230547e-07
+              angularVelocity 1.2063718314644305e-06 1.570492271733049e-06 6.558875642640381e-07
             }
           }
         ]
@@ -345,14 +380,16 @@ DEF BF Robot {
         boundingObject USE RF_upper
         physics Physics {
         }
+        linearVelocity 6.234528626098196e-07 -1.7904630186969138e-07 -2.668509048151208e-07
+        angularVelocity 1.2072292931865771e-06 4.997888473608395e-06 6.479884569392971e-07
       }
     }
   ]
-  boundingObject Box {
-    size 0.5 0.36 0.2
-  }
+  boundingObject USE Body
   physics Physics {
   }
   locked TRUE
   controller "balance_controller"
+  linearVelocity 2.683687042856803e-07 -2.0887223626730483e-07 7.680419046341628e-08
+  angularVelocity 1.197116905562707e-06 4.3871255255718434e-07 6.390141784039796e-07
 }

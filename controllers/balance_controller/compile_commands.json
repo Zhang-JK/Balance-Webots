@@ -16,23 +16,5 @@
     "directory": "/home/laojk/Code/Balance-Webots/controllers/balance_controller",
     "file": "/home/laojk/Code/Balance-Webots/controllers/balance_controller/balance_controller.cpp",
     "output": "/home/laojk/Code/Balance-Webots/controllers/balance_controller/build/release/balance_controller.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/g++",
-      "-c",
-      "-Wall",
-      "-O3",
-      "-DNDEBUG",
-      "-I/",
-      "-I.",
-      "-I/snap/webots/current/usr/share/webots/include/controller/cpp",
-      "-o",
-      "build/release/VMC.o",
-      "VMC.cpp"
-    ],
-    "directory": "/home/laojk/Code/Balance-Webots/controllers/balance_controller",
-    "file": "/home/laojk/Code/Balance-Webots/controllers/balance_controller/VMC.cpp",
-    "output": "/home/laojk/Code/Balance-Webots/controllers/balance_controller/build/release/VMC.o"
   }
 ]

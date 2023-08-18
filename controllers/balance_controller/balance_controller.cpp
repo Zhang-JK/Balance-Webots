@@ -168,7 +168,7 @@ int main(int argc, char **argv)
         // float L_pos = L->getPosition();
 
         // printf("%f %f %f %f\n", RF_pos, RB_pos, LF_pos, LB_pos);
-        printf("%f %f %f %f\n", lLegVirtualToeState.l0, lLegVirtualToeState.phi0, rLegVirtualToeState.l0, rLegVirtualToeState.phi0);
+        // printf("%f %f %f %f\n", lLegVirtualToeState.l0, lLegVirtualToeState.phi0, rLegVirtualToeState.l0, rLegVirtualToeState.phi0);
         // printf("%f %f %f %f\n", lLegMotorState.phi1, lLegMotorState.phi4,rLegMotorState.phi1, rLegMotorState.phi4);
     }
     delete robot;
