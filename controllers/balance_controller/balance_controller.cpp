@@ -31,10 +31,10 @@ int main(int argc, char **argv)
 
     Gyro *gyro = robot->getGyro("gyro");
     Accelerometer *accelerometer = robot->getAccelerometer("accelerometer");
-    InertialUnit *inertial = robot->getInertialUnit("inertial unit");
+    InertialUnit *imu = robot->getInertialUnit("inertial unit");
     gyro->enable(TIME_STEP);
     accelerometer->enable(TIME_STEP);
-    inertial->enable(TIME_STEP);
+    imu->enable(TIME_STEP);
 
     Motor *LF = robot->getMotor("LF_motor");
     Motor *LB = robot->getMotor("LB_motor");
@@ -106,6 +106,13 @@ int main(int argc, char **argv)
     OLSMethod<7> olsLSpeed;
     OLSMethod<7> olsRSpeed;
 
+    OLSMethod<7> olsLToe;
+    OLSMethod<7> olsRToe;
+
+    float euler[3] = {};
+    float gyroRates[3] = {};
+    float accel[3] = {};
+
     float motorSpeed[2] = {};
     float imuSpeed = 0.0f;
     float currentStatesL[6] = {};
@@ -140,11 +147,30 @@ int main(int argc, char **argv)
         rLegVirtualToeState = calcVirtualToeState(rLegMotorState,
                                                   TIME_STEP / 1000.0f);
 
+        /* update imu */
+        euler[0] = imu->getRollPitchYaw()[0];
+        euler[1] = imu->getRollPitchYaw()[1];
+        euler[2] = imu->getRollPitchYaw()[2];
+        gyroRates[0] = gyro->getValues()[0];
+        gyroRates[1] = gyro->getValues()[1];
+        gyroRates[2] = gyro->getValues()[2];
+        accel[0] = accelerometer->getValues()[0];
+        accel[1] = accelerometer->getValues()[1];
+        accel[2] = accelerometer->getValues()[2];
+
         /* estimate speed */
         motorSpeed[0] = olsLSpeed.derivative(L->getPosition(), TIME_STEP / 1000.0f);
         motorSpeed[1] = olsRSpeed.derivative(R->getPosition(), TIME_STEP / 1000.0f);
+        float speed = (motorSpeed[0] + motorSpeed[1]) / 2.0f;
 
         /* update status */
+        currentStatesL[0] = lLegVirtualToeState.phi1 + euler[1];
+        currentStatesL[1] = olsLToe.derivative(currentStatesL[0], TIME_STEP / 1000.0f);
+        currentStatesL[2] = 0.0f;
+        currentStatesL[3] = speed;
+        currentStatesL[4] = euler[1];
+        currentStatesL[5] = gyroRates[1];
+
         // currentStates[0] = gyro->getValues()[0]; // leg
         // currentStates[1] = gyro->getValues()[1];
         // currentStates[2] = gyro->getValues()[2]; // speed
@@ -156,7 +182,7 @@ int main(int argc, char **argv)
         // LB->setPosition(-0.38f);
         // RF->setPosition(0.38f);
         // RB->setPosition(0.38f);
-                LF->setPosition(0);
+        LF->setPosition(0);
         LB->setPosition(0);
         RF->setPosition(0);
         RB->setPosition(0);
@@ -167,9 +193,11 @@ int main(int argc, char **argv)
         // R->setTorque(-1.0f);
         // float L_pos = L->getPosition();
 
+        printf("%f %f %f\n", speed, currentStatesL[4], currentStatesL[5]);
         // printf("%f %f %f %f\n", RF_pos, RB_pos, LF_pos, LB_pos);
-        printf("%f %f %f %f\n", lLegVirtualToeState.l0, lLegVirtualToeState.phi0, rLegVirtualToeState.l0, rLegVirtualToeState.phi0);
+        // printf("%f %f %f %f\n", lLegVirtualToeState.l0, lLegVirtualToeState.phi0, rLegVirtualToeState.l0, rLegVirtualToeState.phi0);
         // printf("%f %f %f %f\n", lLegMotorState.phi1, lLegMotorState.phi4,rLegMotorState.phi1, rLegMotorState.phi4);
+        // printf("%f %f %f\n", inertial->getRollPitchYaw()[0], inertial->getRollPitchYaw()[1], inertial->getRollPitchYaw()[2]);
     }
     delete robot;
 
